@@ -190,7 +190,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#importar-espreitar" id="toc-importar-espreitar" class="nav-link active" data-scroll-target="#importar-espreitar"><span class="toc-section-number">2.1</span>  Importar, espreitar</a></li>
+  <li><a href="#importar-espreitar" id="toc-importar-espreitar" class="nav-link active" data-scroll-target="#importar-espreitar"><span class="toc-section-number">2.1</span>  Importar, espreitar,</a></li>
+  <li><a href="#nomes-classes-e-valores" id="toc-nomes-classes-e-valores" class="nav-link" data-scroll-target="#nomes-classes-e-valores"><span class="toc-section-number">2.2</span>  Nomes, classes e valores</a></li>
   </ul>
 </nav>
     </div>
@@ -241,7 +242,7 @@ Atenção
 </details>
 </div>
 <section id="importar-espreitar" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="importar-espreitar"><span class="header-section-number">2.1</span> Importar, espreitar</h2>
+<h2 data-number="2.1" class="anchored" data-anchor-id="importar-espreitar"><span class="header-section-number">2.1</span> Importar, espreitar,</h2>
 <p>Primeiro, importamos os dados, para que possamos mexer neles no RStudio, e damos uma espreitadela<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 👀.</p>
 <div class="cell">
 <details>
@@ -303,7 +304,56 @@ $ `Network ID`                                                                  
 $ Tags                                                                                                                                                                                                                                                                         &lt;lgl&gt; …</code></pre>
 </div>
 </div>
-<p>Espreitando os conteúdos de <code>data_raw</code>, encontramos 509 linhas e 42 colunas com nomes descritivos mas difíceis de utilizar num contexto de programação. Em primeiro lugar, vamos então renomear as colunas e selecionar apenas as que vamos querer utilizar no futuro.</p>
+</section>
+<section id="nomes-classes-e-valores" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="nomes-classes-e-valores"><span class="header-section-number">2.2</span> Nomes, classes e valores</h2>
+<p>Espreitando os conteúdos de <code>data_raw</code>, encontramos 509 linhas e 42 colunas com nomes descritivos mas difíceis de utilizar num contexto de programação. Em primeiro lugar, vamos então renomear as colunas e selecionar apenas as que vamos querer utilizar no futuro. É chato, mas tem de ser. Comecemos.</p>
+<div class="cell">
+<details>
+<summary>Mostra lá o código</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># selecionar e renomear as variaveis ao mesmo tempo</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">envolvimento_despesas =</span> <span class="dv">5</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">valor_inflacao =</span> <span class="dv">6</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">literacia_1 =</span> <span class="dv">7</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">literacia_2 =</span> <span class="dv">8</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">literacia_3 =</span> <span class="dv">9</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">literacia_4 =</span> <span class="dv">10</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">literacia_5 =</span> <span class="dv">11</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">contabili_1 =</span> <span class="dv">12</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">contabili_2 =</span> <span class="dv">13</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">contabili_3 =</span> <span class="dv">14</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">contabili_4 =</span> <span class="dv">15</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">contabili_5 =</span> <span class="dv">16</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">piada_escolha =</span> <span class="dv">17</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">piada_gosto =</span> <span class="dv">18</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">satisfacao_hoje =</span> <span class="dv">19</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">satisfacao_antes =</span> <span class="dv">20</span>,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">comparar_poupancas =</span> <span class="dv">21</span>,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">compara_gastos =</span> <span class="dv">22</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">emocao_calma =</span> <span class="dv">23</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">emocao_medo =</span> <span class="dv">24</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">emocao_felicidade =</span> <span class="dv">25</span>,</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">emocao_tristeza =</span> <span class="dv">26</span>,</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">emocao_confusao =</span> <span class="dv">27</span>,</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">emocao_ansiedade =</span> <span class="dv">28</span>,</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">emocao_contentamento =</span> <span class="dv">29</span>,</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">emocao_outra =</span> <span class="dv">30</span>,</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">emocao_nenhuma =</span> <span class="dv">31</span>,</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">emocao_outra_aberta =</span> <span class="dv">32</span>,</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">influencia_inflacao =</span> <span class="dv">33</span>,</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">idade =</span> <span class="dv">34</span>,</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">genero =</span> <span class="dv">35</span>,</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">distrito =</span> <span class="dv">36</span>,</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">rendimento =</span> <span class="dv">37</span>,</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">comentario =</span> <span class="dv">38</span>,</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">tempo_comeco =</span> <span class="dv">39</span>,</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">tempo_fim =</span> <span class="dv">40</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Já está!</p>
 
 
 </section>
