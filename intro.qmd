@@ -1,9 +1,3 @@
-# Introduction
+# Introdução
 
-This is a book created from markdown and executable code.
-
-See @knuth84 for additional discussion of literate programming.
-
-```{r}
-1 + 1
-```
+A LAICOS realizou um inquérito online a residentes de Portugal para melhor entender como a inflação tem impactado as nossas vidas. Neste livro, apresentamos uma primeira análise dos dados.

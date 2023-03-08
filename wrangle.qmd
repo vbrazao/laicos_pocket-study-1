@@ -1,0 +1,38 @@
+# Tratamento de dados
+
+Esta secção narra o tratamento dos dados do inquérito, para que as pessoas interessadas possam seguir o processamento dos dados antes das análises apresentadas nas secções seguintes.
+
+::: {.callout-note collapse="false"}
+## Atenção
+
+Nesta secção, o código refere a pasta "data", que não existe no repositório online que gera este livro. Essa omissão é propositada: queremos ser o mais transparentes possível, partilhando todo o código de análise, mas precisamos de respeitar a anonimidade que foi prometida aos participantes no início do inquérito.
+:::
+
+Em preparação, precisamos de ativar algumas packages.
+
+```{r packages}
+#| warning: false
+library(tidyverse)
+library(readr)
+library(here)
+```
+
+## Importar, espreitar
+
+Primeiro, importamos os dados, para que possamos mexer neles no RStudio, e damos uma espreitadela[^wrangle-1] 👀.
+
+```{r data}
+# importar os dados
+data_raw <- readr::read_csv(
+  here::here("data", "BD_PocketStudy1.csv"),
+  # calar a mensagem sobre tipo de colunas
+  show_col_types = FALSE
+)
+
+# espreitar o que temos
+dplyr::glimpse(data_raw)
+```
+
+Espreitando os conteúdos de `data_raw`, encontramos 509 linhas e 42 colunas com nomes descritivos mas difíceis de utilizar num contexto de programação. Em primeiro lugar, vamos então renomear as colunas e selecionar apenas as que vamos querer utilizar no futuro.
+
+[^wrangle-1]: Em inglês, espreitar é "to glimpse". A função `glimpse()` da package `dplyr` faz isso mesmo.

@@ -2,13 +2,18 @@ project:
   type: book
   output-dir: docs
 
+lang: pt
+
 book:
-  title: "laicos_pocket-study-1"
-  author: "Jane Doe"
-  date: "3/8/2023"
+  title: "Pocket Study 1: Inflação"
+  author: 
+    - "Vasco Brazão"
+    - "LAICOS"
+  date: "futuro próximo"
   chapters:
     - index.qmd
     - intro.qmd
+    - wrangle.qmd
     - summary.qmd
     - references.qmd
 
@@ -17,6 +22,8 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
+    code-fold: true
+    code-summary: "Mostra lá o código"
   pdf:
     documentclass: scrreprt
 
